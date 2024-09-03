@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_marginHorizontal="@dimen/margin_medium"
+    android:layout_marginVertical="@dimen/margin_small"
+    app:cardBackgroundColor="@color/color_secondary"
+    app:cardElevation="23dp"
+    app:cardCornerRadius="23dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewIvFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="23dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardBackgroundColor="@color/color_secondary"
+
+            >
+
+            <ImageView
+                android:id="@+id/ivFavorite"
+                android:layout_width="136dp"
+                android:layout_height="150dp"
+                tools:background="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/tvFavoriteName"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:textColor="@color/color_text_primary"
+            android:textSize="@dimen/text_size_small"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@+id/cardViewIvFavorite"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Películas Favoritas"
+
+            />
+
+        <TextView
+            android:id="@+id/tvFavoriteYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="@dimen/text_size_small"
+            app:layout_constraintStart_toEndOf="@+id/cardViewIvFavorite"
+            app:layout_constraintTop_toBottomOf="@+id/tvFavoriteName"
+            tools:text="Año" />
+
+        <TextView
+            android:id="@+id/tvFavoriteTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="@dimen/text_size_small"
+            app:layout_constraintStart_toEndOf="@+id/tvFavoriteYear"
+            app:layout_constraintTop_toBottomOf="@+id/tvFavoriteName"
+            tools:text="Duración" />
+
+        <ImageView
+            android:id="@+id/ivFavoriteDelete"
+            android:layout_width="32dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="168dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/color_btn"
+            android:src="@drawable/baseline_delete_forever_24"
+            app:layout_constraintCircleRadius="50dp"
+            app:layout_constraintStart_toEndOf="@+id/cardViewIvFavorite"
+            app:layout_constraintTop_toBottomOf="@+id/tvFavoriteTime" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
