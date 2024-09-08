@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="color_text_primary">#FFFFFFFF</color>
-    <color name="background">#121217</color>
-    <color name="color_btn">#1A1AE5</color>
-    <color name="color_secondary">#292938</color>
-    <color name="color_text_secondary">#9E9EB8</color>
+    <color name="color_background">#121217</color>
+    <color name="color_text_primary">#121217</color>
+    <color name="color_text_secondary">#FFFFFF</color>
+    <color name="color_btn_primary">#1A1AE5</color>
+    <color name="color_btn_secondary">#FFFFFF</color>
+    <color name="color_input_text_color">#9E9EB8</color>
+    <!--Input no selected color-->
+    <color name="color_input_noselected">#1C1C26</color>
+    <!--Input selected color-->
+    <color name="color_input_selected">#292938</color>
+    <color name="color_border_input_selected">#9E9EB8</color>
+    <!--Checkbox remember user color -->
+    <color name="color_text_forgot_password">#1A1AE5</color>
 </resources>
