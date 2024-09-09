@@ -18,5 +18,7 @@
         <item>1997 – 2h 03m</item>
     </string-array>
     <string name="favorite_title">Películas Favoritas</string>
+    <string name="title">Title</string>
+    <string name="test">Test</string>
 
 </resources>
