@@ -31,7 +31,7 @@
         app:boxStrokeWidth="0dp"
         app:circularflow_defaultRadius="15dp"
         app:circularflow_radiusInDP="15dp"
-        app:hintTextColor="@color/white"
+        app:hintTextColor="@color/color_text_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
