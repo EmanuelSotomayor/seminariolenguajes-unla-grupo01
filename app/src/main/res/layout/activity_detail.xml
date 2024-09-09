@@ -41,8 +41,7 @@
         android:textColor="#FFFFFF"
         android:textAlignment="center"
         tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="416dp"
-        android:background=""/>
+        tools:layout_editor_absoluteY="416dp"/>
 
     <Button
         android:id="@+id/button2"
@@ -50,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="300dp"
         android:textColor="#FFFFFF"
-        android:text="" />
+        android:text="Test"/>
 
 
 </LinearLayout>
