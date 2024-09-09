@@ -1,10 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".createaccounts.CreateAccountsActivity">
+    android:background="@drawable/registro_fondo"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:text="Crear una cuenta"
+        android:textColor="@color/white"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:hint="Email"
+        android:drawableLeft="@drawable/baseline_attach_email_24"
+        android:drawablePadding="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        android:background="@drawable/rounded_corner"
+        android:padding="20dp"
+        android:inputType="text"
+        android:id="@+id/editEmail"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:hint="Contraseña"
+        android:drawableLeft="@drawable/baseline_create_24"
+        android:drawablePadding="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        android:background="@drawable/rounded_corner"
+        android:padding="20dp"
+        android:inputType="text"
+        android:id="@+id/editContraseña"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
+        android:hint="Confirmar contraseña"
+        android:drawableLeft="@drawable/baseline_check_24"
+        android:drawablePadding="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        android:background="@drawable/rounded_corner"
+        android:padding="20dp"
+        android:inputType="text"
+        android:id="@+id/editConfContraseña"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrate"
+        android:backgroundTint="@color/white"
+        android:textColor="#3B84F1"
+        android:padding="18dp"
+        android:layout_marginTop="440dp"
+        android:textSize="20sp"
+        android:id="@+id/btnRegistro"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="530dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="¿Ya tienes una cuenta?"
+        android:textColor="@color/white"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="560dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Ingresar."
+        android:textColor="#3B84F1"
+        />
+
+
+</RelativeLayout>
