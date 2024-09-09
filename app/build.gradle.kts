@@ -33,15 +33,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    viewBinding{
-        enable = true
-    }
 }
 
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
@@ -49,8 +45,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation ("com.github.bumptech.glide:glide:4.14.2@aar") {
-        var transitive = true
-    }
-    implementation("io.coil-kt:coil:2.7.0")
 }
