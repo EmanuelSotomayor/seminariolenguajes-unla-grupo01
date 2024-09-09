@@ -37,7 +37,7 @@ class HomeMenuActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         adapter.setOnClickListener { view ->
             val position = recyclerView.getChildAdapterPosition(view!!)
-            val intent = Intent(this@HomeMenuActivity, MainActivity::class.java)
+            val intent = Intent(this@HomeMenuActivity, DetailActivity::class.java)
             //intent.putExtra("film", films.get(position))
             startActivity(intent)
         }
