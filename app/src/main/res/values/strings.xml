@@ -17,6 +17,6 @@
         <item>1998 – 1h 43m</item>
         <item>1997 – 2h 03m</item>
     </string-array>
-
+    <string name="favorite_title">Películas Favoritas</string>
 
 </resources>
