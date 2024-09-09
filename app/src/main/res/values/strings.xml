@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">pelisApp</string>
+
+    <string-array name="example_films">
+        <item>Interestellar</item>
+        <item>Fury</item>
+        <item>The Truman Show</item>
+        <item>The Game</item>
+    </string-array>
+
+    <string-array name="example_films_info">
+        <item>2014 – 2h 49m</item>
+        <item>2014 – 2h 14m</item>
+        <item>1998 – 1h 43m</item>
+        <item>1997 – 2h 03m</item>
+    </string-array>
+
+
 </resources>
