@@ -12,10 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Film_RecycleViewAdapter extends RecyclerView.Adapter<Film_RecycleViewAdapter.MyViewHolder>{
+public class Film_RecycleViewAdapter extends RecyclerView.Adapter<Film_RecycleViewAdapter.MyViewHolder> implements View.OnClickListener{
 
     Context context;
     ArrayList<FilmModel> filmModels;
+    private View.OnClickListener listener;
 
     public Film_RecycleViewAdapter(Context context, ArrayList<FilmModel> filmModels){
         this.context = context;
@@ -27,6 +28,7 @@ public class Film_RecycleViewAdapter extends RecyclerView.Adapter<Film_RecycleVi
     public Film_RecycleViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recycler_view_row, parent, false);
+        view.setOnClickListener(this);
         return new Film_RecycleViewAdapter.MyViewHolder(view);
     }
 
@@ -40,6 +42,16 @@ public class Film_RecycleViewAdapter extends RecyclerView.Adapter<Film_RecycleVi
     @Override
     public int getItemCount() {
         return filmModels.size();
+    }
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener != null){
+            listener.onClick(view);
+        }
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{

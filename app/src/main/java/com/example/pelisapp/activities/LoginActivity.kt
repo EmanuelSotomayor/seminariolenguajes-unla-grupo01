@@ -10,8 +10,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.pelisapp.HomeMenuActivity
 import com.example.pelisapp.MainActivity
 import com.example.pelisapp.R
+import com.example.pelisapp.createaccounts.CreateAccountsActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -52,19 +54,19 @@ class LoginActivity : AppCompatActivity() {
         }
 
         this.signUpBtn.setOnClickListener{
-            //this.navigateToRegisterActivity();
+            this.navigateToRegisterActivity();
         }
 
     }
 
     private fun navigateToMainActivity(): Unit{
-        val intentNavigateToMain = Intent(this, MainActivity::class.java);
+        val intentNavigateToMain = Intent(this, HomeMenuActivity::class.java);
         startActivity(intentNavigateToMain);
     }
 
     private fun navigateToRegisterActivity(): Unit{
-        //val intentNavigateToRegister = Intent(this, RegisterActivity::class.java);
-        //startActivity(intentNavigateToRegister);
+        val intentNavigateToRegister = Intent(this, CreateAccountsActivity::class.java);
+        startActivity(intentNavigateToRegister);
     }
 
     private fun navigateToForgotPasswordActivity(): Unit{
