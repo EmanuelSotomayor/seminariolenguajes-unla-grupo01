@@ -1,4 +1,4 @@
-package com.example.pelisapp.favorite
+package com.example.pelisapp.activities
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.pelisapp.R
 import com.example.pelisapp.databinding.ActivityFavoriteBinding
-import com.example.pelisapp.favorite.adapter.FavoritePelisAdapter
+import com.example.pelisapp.models.FavoriteFilmProvider
+import com.example.pelisapp.views.adapters.FavoriteFilmAdapter
 
 class FavoriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFavoriteBinding
@@ -31,7 +31,7 @@ class FavoriteActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = FavoritePelisAdapter(FavoritePelisProvider.favoriteMoviesList)*/
        binding.recycleFavoritePeli.layoutManager = LinearLayoutManager(this)
-       binding.recycleFavoritePeli.adapter = FavoritePelisAdapter(FavoritePelisProvider.favoriteMoviesList)
+       binding.recycleFavoritePeli.adapter = FavoriteFilmAdapter(FavoriteFilmProvider.favoriteMoviesList)
 
     }
 }

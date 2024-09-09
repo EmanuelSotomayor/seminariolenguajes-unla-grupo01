@@ -1,14 +1,17 @@
-package com.example.pelisapp
+package com.example.pelisapp.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pelisapp.models.FilmModel
+import com.example.pelisapp.views.adapters.FilmRecyclerViewAdapter
+import com.example.pelisapp.MainActivity
+import com.example.pelisapp.R
 
 class HomeMenuActivity : AppCompatActivity() {
 
@@ -29,7 +32,7 @@ class HomeMenuActivity : AppCompatActivity() {
 
         fillFilms()
 
-        val adapter = Film_RecycleViewAdapter(this, films)
+        val adapter = FilmRecyclerViewAdapter(this, films)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         adapter.setOnClickListener { view ->

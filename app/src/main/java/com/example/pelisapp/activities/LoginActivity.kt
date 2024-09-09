@@ -10,10 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.pelisapp.HomeMenuActivity
-import com.example.pelisapp.MainActivity
 import com.example.pelisapp.R
-import com.example.pelisapp.createaccounts.CreateAccountsActivity
 
 class LoginActivity : AppCompatActivity() {
 

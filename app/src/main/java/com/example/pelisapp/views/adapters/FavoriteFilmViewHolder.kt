@@ -1,15 +1,12 @@
-package com.example.pelisapp.favorite.adapter
+package com.example.pelisapp.views.adapters
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pelisapp.R
-import com.example.pelisapp.favorite.favoritePelis
+import com.example.pelisapp.models.FavoriteFilmModel
 import coil.load
 import com.example.pelisapp.databinding.ItemFavoritepelisBinding
 
-class FavoritePelisViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class FavoriteFilmViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val bindin= ItemFavoritepelisBinding.bind(view)
 
@@ -21,17 +18,17 @@ class FavoritePelisViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 
 
-    fun render(favoritePelisModel: favoritePelis){
+    fun render(favoriteFilmModelModel: FavoriteFilmModel){
         //favoriteName.text = favoritePelisModel.name
         //favoriteYear.text = favoritePelisModel.year
         //favoriteTime.text = favoritePelisModel.timeDuraction
         //Glide.with(favoriteImage.context).load(favoritePelisModel.poster).into(favoriteImage)
 
         //favoriteImage.load(favoritePelisModel.poster)
-        bindin.tvFavoriteName.text = favoritePelisModel.name
-        bindin.tvFavoriteYear.text = favoritePelisModel.year
-        bindin.tvFavoriteTime.text = favoritePelisModel.timeDuraction
-        bindin.ivFavorite.load(favoritePelisModel.poster)
+        bindin.tvFavoriteName.text = favoriteFilmModelModel.name
+        bindin.tvFavoriteYear.text = favoriteFilmModelModel.year
+        bindin.tvFavoriteTime.text = favoriteFilmModelModel.timeDuraction
+        bindin.ivFavorite.load(favoriteFilmModelModel.poster)
        // println(favoritePelisModel.poster)
     }
 }

@@ -1,4 +1,4 @@
-package com.example.pelisapp;
+package com.example.pelisapp.views.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,31 +9,33 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.pelisapp.R;
+import com.example.pelisapp.models.FilmModel;
 
 import java.util.ArrayList;
 
-public class Film_RecycleViewAdapter extends RecyclerView.Adapter<Film_RecycleViewAdapter.MyViewHolder> implements View.OnClickListener{
+public class FilmRecyclerViewAdapter extends RecyclerView.Adapter<FilmRecyclerViewAdapter.MyViewHolder> implements View.OnClickListener{
 
     Context context;
     ArrayList<FilmModel> filmModels;
     private View.OnClickListener listener;
 
-    public Film_RecycleViewAdapter(Context context, ArrayList<FilmModel> filmModels){
+    public FilmRecyclerViewAdapter(Context context, ArrayList<FilmModel> filmModels){
         this.context = context;
         this.filmModels = filmModels;
     }
 
     @NonNull
     @Override
-    public Film_RecycleViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FilmRecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recycler_view_row, parent, false);
         view.setOnClickListener(this);
-        return new Film_RecycleViewAdapter.MyViewHolder(view);
+        return new FilmRecyclerViewAdapter.MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Film_RecycleViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FilmRecyclerViewAdapter.MyViewHolder holder, int position) {
         holder.filmName.setText(filmModels.get(position).getTitle());
         holder.filmInfo.setText(filmModels.get(position).getInfo());
         holder.imageView.setImageResource(filmModels.get(position).getImage());

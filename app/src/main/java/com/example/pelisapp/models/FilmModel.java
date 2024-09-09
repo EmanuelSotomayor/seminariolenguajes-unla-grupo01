@@ -1,4 +1,4 @@
-package com.example.pelisapp;
+package com.example.pelisapp.models;
 
 public class FilmModel {
     int image;

@@ -1,19 +1,14 @@
-package com.example.pelisapp.createaccounts
+package com.example.pelisapp.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.pelisapp.HomeMenuActivity
 import com.example.pelisapp.R
-import com.example.pelisapp.activities.LoginActivity
 
 class CreateAccountsActivity : AppCompatActivity() {
     lateinit var emailInput : EditText
