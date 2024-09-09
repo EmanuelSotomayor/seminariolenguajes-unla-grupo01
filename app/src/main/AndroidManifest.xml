@@ -24,6 +24,9 @@
             android:name=".favorite.FavoriteActivity"
             android:exported="false" />
         <activity
+            android:name=".favorite.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".createaccounts.CreateAccountsActivity"
             android:exported="false" />
         <activity
