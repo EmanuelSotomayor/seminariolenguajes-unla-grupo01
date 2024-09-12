@@ -7,9 +7,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pelisapp.R
 
+import dagger.hilt.android.AndroidEntryPoint
+
+
+@AndroidEntryPoint
 class CreateAccountsActivity : AppCompatActivity() {
     lateinit var emailInput : EditText
     lateinit var contraseñaInput : EditText
@@ -36,6 +41,7 @@ class CreateAccountsActivity : AppCompatActivity() {
             val contraseña = contraseñaInput.text.toString()
             val confContraseña = confContraseñaInput.text.toString()
             //Log.i("Cuentas creadas --> ", "Email : $email , contraseña : $contraseña y confirmacion : $confContraseña")
+            //val user = UserEntity(name = "juan", email = email, password = contraseña)
 
             val intent = Intent(this, HomeMenuActivity::class.java)
             startActivity(intent)

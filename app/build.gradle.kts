@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -40,7 +42,9 @@ android {
 
 dependencies {
     //val room_version = "2.6.1"
-
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
@@ -54,3 +58,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.coil)
 }
+kapt {
+    correctErrorTypes = true
+}
+
+
