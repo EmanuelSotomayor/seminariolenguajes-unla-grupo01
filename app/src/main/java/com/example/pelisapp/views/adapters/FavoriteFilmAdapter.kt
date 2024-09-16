@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pelisapp.R
 import com.example.pelisapp.models.FavoriteFilmModel
 
-class FavoriteFilmAdapter(private val favoriteFilmModelList: List<FavoriteFilmModel>): RecyclerView.Adapter<FavoriteFilmViewHolder>() {
+class FavoriteFilmAdapter(
+    private val favoriteFilmModelList: List<FavoriteFilmModel>,
+    private var onClickListener:(FavoriteFilmModel) -> Unit,
+    private var onClickDelete:(Int) -> Unit
+    ): RecyclerView.Adapter<FavoriteFilmViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteFilmViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return FavoriteFilmViewHolder(layoutInflater.inflate(R.layout.item_favoritepelis, parent, false))
@@ -16,7 +20,7 @@ class FavoriteFilmAdapter(private val favoriteFilmModelList: List<FavoriteFilmMo
 
     override fun onBindViewHolder(holder: FavoriteFilmViewHolder, position: Int) {
         val item = favoriteFilmModelList[position]
-        holder.render(item)
+        holder.render(item,onClickListener,onClickDelete)
 
     }
 

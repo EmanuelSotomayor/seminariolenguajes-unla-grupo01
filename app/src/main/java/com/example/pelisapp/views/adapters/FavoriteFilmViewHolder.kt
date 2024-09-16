@@ -18,7 +18,11 @@ class FavoriteFilmViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 
 
-    fun render(favoriteFilmModelModel: FavoriteFilmModel){
+    fun render(
+        favoriteFilmModelModel: FavoriteFilmModel,
+        onClickListener:(FavoriteFilmModel) -> Unit,
+        onClickDelete:(Int) -> Unit
+    ){
         //favoriteName.text = favoritePelisModel.name
         //favoriteYear.text = favoritePelisModel.year
         //favoriteTime.text = favoritePelisModel.timeDuraction
@@ -29,6 +33,10 @@ class FavoriteFilmViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         bindin.tvFavoriteYear.text = favoriteFilmModelModel.year
         bindin.tvFavoriteTime.text = favoriteFilmModelModel.timeDuraction
         bindin.ivFavorite.load(favoriteFilmModelModel.poster)
+        itemView.setOnClickListener{onClickListener(favoriteFilmModelModel)}
+        bindin.ivFavoriteDelete.setOnClickListener{onClickDelete(adapterPosition)}
+
+
        // println(favoritePelisModel.poster)
     }
 }
