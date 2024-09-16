@@ -7,10 +7,12 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.pelisapp.R
+import com.example.pelisapp.database.model.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var inputEmail: EditText;
     private lateinit var inputPassword: EditText;
     private lateinit var checkboxRememberUser: CheckBox;
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
