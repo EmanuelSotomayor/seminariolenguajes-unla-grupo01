@@ -24,6 +24,8 @@ class CreateAccountsActivity : AppCompatActivity() {
     lateinit var confContraseñaInput : EditText
     lateinit var registrarBtn : Button
     lateinit var ingresarBtn : TextView
+    lateinit var nameInput : EditText
+
     private val userViewModel: UserViewModel by viewModels()
 
     @SuppressLint("MissingInflatedId")
@@ -37,6 +39,7 @@ class CreateAccountsActivity : AppCompatActivity() {
         confContraseñaInput = findViewById(R.id.editConfContraseña)
         registrarBtn = findViewById(R.id.btnRegistro)
         ingresarBtn = findViewById(R.id.btnIngresar)
+        nameInput = findViewById(R.id.editNombre)
 
 
 
