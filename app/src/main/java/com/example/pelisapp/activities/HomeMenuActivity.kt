@@ -16,7 +16,7 @@ import com.example.pelisapp.views.adapters.FilmRecyclerViewAdapter
 import com.example.pelisapp.MainActivity
 import com.example.pelisapp.R
 
-class HomeMenuActivity : AppCompatActivity() {
+class HomeMenuActivity : BaseActivity() {
 
     lateinit var films: ArrayList<FilmModel>
     lateinit var imageView: ImageView
@@ -25,7 +25,8 @@ class HomeMenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.home_menu)
+        layoutInflater.inflate(R.layout.home_menu, findViewById(R.id.activity_content))
+        //setContentView(R.layout.home_menu)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.home_menu)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

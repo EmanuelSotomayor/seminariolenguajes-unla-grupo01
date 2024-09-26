@@ -12,7 +12,7 @@ import com.example.pelisapp.models.FavoriteFilmModel
 import com.example.pelisapp.models.FavoriteFilmProvider
 import com.example.pelisapp.views.adapters.FavoriteFilmAdapter
 
-class FavoriteActivity : AppCompatActivity() {
+class FavoriteActivity : BaseActivity() {
     private lateinit var binding: ActivityFavoriteBinding
     private var favoriteMoviesMutableList: MutableList<FavoriteFilmModel> = FavoriteFilmProvider.favoriteMoviesList.toMutableList()
     private lateinit var adapter: FavoriteFilmAdapter
@@ -20,8 +20,9 @@ class FavoriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        layoutInflater.inflate(R.layout.activity_favorite, findViewById(R.id.activity_content))
        binding= ActivityFavoriteBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        //setContentView(binding.root)
         initRecyclerView()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

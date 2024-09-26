@@ -11,7 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.pelisapp.R
 
-class UserActivity : AppCompatActivity() {
+class UserActivity : BaseActivity() {
     private lateinit var sharedPreferences: android.content.SharedPreferences
    private lateinit var textUserName: TextView
     private lateinit var btnLogout: Button
@@ -20,7 +20,8 @@ class UserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_user)
+        layoutInflater.inflate(R.layout.activity_user,findViewById(R.id.activity_content))
+        //setContentView(R.layout.activity_user)
         textUserName = findViewById(R.id.textUserName)
         btnLogout = findViewById(R.id.btnLogout)
         sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE)

@@ -22,5 +22,8 @@
     <string name="test">Test</string>
     <string name="film_image">Film Image</string>
     <string name="cerrar_sesion">cerrar sesion</string>
+    <string name="home">Home</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="usuario">Usuario</string>
 
 </resources>
