@@ -20,5 +20,7 @@
     <string name="favorite_title">Películas Favoritas</string>
     <string name="title">Title</string>
     <string name="test">Test</string>
+    <string name="film_image">Film Image</string>
+    <string name="cerrar_sesion">cerrar sesion</string>
 
 </resources>
