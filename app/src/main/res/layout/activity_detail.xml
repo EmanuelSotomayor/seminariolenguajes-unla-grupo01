@@ -31,6 +31,7 @@
             android:layout_width="370dp"
             android:layout_height="250dp"
             android:layout_marginTop="20dp"
+            android:contentDescription="@string/film_image"
             app:srcCompat="@drawable/interestellar" />
 
         <ScrollView

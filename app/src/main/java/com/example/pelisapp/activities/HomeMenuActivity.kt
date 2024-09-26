@@ -44,10 +44,10 @@ class HomeMenuActivity : BaseActivity() {
         adapter.setOnClickListener { view ->
             val position = recyclerView.getChildAdapterPosition(view!!)
             val intent = Intent(this@HomeMenuActivity, DetailActivity::class.java)
-            Log.d("HomeMenuActivity", "Film clicked: $position")
+           /* Log.d("HomeMenuActivity", "Film clicked: $position")
             Log.d("HomeMenuActivity", "Film title: ${films[position].title}")
-            Log.d("HomeMenuActivity", "Film info: ${films[position].info}")
-            //intent.putExtra("film", films[position])
+            Log.d("HomeMenuActivity", "Film info: ${films[position].info}")*/
+            intent.putExtra("film", films[position])
             startActivity(intent)
         }
         imageView = findViewById(R.id.imageView)
