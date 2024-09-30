@@ -1,6 +1,8 @@
 package com.example.pelisapp.database
 
+import android.content.Context
 import androidx.room.Database
+import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.pelisapp.database.dao.FavoriteMovieDao
 
@@ -14,5 +16,32 @@ abstract class AppDatabase: RoomDatabase()  {
     abstract fun userDao(): UserDao
     abstract fun favoriteMovieDao(): FavoriteMovieDao
 
+    /*Objeto que simula un método estatico para obtener una instancia de la conexión
+    de la BD, usando el patrón de diseño Singleton*/
+    companion object{
+
+        private var INSTANCE: AppDatabase? = null;
+
+        fun getDBInstance(context: Context): AppDatabase {
+
+            if(INSTANCE == null){
+
+                synchronized(AppDatabase::class){
+                    INSTANCE = Room.databaseBuilder(
+                        context.applicationContext,
+                        AppDatabase::class.java, "movies_app_database")
+                        .allowMainThreadQueries()
+                        .fallbackToDestructiveMigration()
+                        .build()
+                }
+
+            }
+
+            //Especificamos que el objeto INSTANCE nunca va a ser nulo.
+            return INSTANCE!!;
+
+        }
+
+    }
 
 }
