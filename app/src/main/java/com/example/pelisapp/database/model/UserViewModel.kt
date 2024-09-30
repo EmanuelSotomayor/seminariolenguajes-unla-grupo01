@@ -16,6 +16,7 @@ class UserViewModel @Inject constructor(private val userDao: UserDao) : ViewMode
     suspend fun addUser(user: UserEntity) = userDao.insertUser(user)
     suspend fun getAllUsers(): List<UserEntity> = userDao.getAllUsers()
     suspend fun getUserById(id: Int): UserEntity? = userDao.getUserById(id)
+    suspend fun getUserByEmail(email: String): UserEntity? = userDao.getUserByEmail(email)
     suspend fun userExists(email: String): Boolean {
         val user = userDao.getUserByEmail(email)
         return user != null

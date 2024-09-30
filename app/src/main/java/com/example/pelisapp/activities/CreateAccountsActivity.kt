@@ -13,6 +13,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.pelisapp.R
+import com.example.pelisapp.database.entitys.UserEntity
 import com.example.pelisapp.database.model.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -54,15 +55,15 @@ class CreateAccountsActivity : AppCompatActivity() {
             val email = emailInput.text.toString()
             val contraseña = contraseñaInput.text.toString()
             val confContraseña = confContraseñaInput.text.toString()
-            //val nombre = nombreInput.text.toString()
+            val nombre = nameInput.text.toString()
 
             //val user = UserEntity(email = email, contraseña = contraseña,confContraseña = confContraseña);
-          if (validarCampos(email,contraseña,confContraseña)){
+          if (validarCampos(email,contraseña,confContraseña,nombre)){
             lifecycleScope.launch {
                 if(userExits(email)){
                     emailInput.error = "Este email ya esta registrado"
                 }else {
-                    val user = UserEntity(email = email,contraseña = contraseña,confContraseña = confContraseña)
+                    val user = UserEntity(name = nombre,email = email, password = contraseña)
                     userViewModel.addUser(user)
                     val userId = userViewModel.getUserByEmail(email)
                     val sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE)
@@ -88,33 +89,42 @@ class CreateAccountsActivity : AppCompatActivity() {
 
     }
 
-    private fun validarCampos(email: String,contraseña: String,confContraseña: String):Boolean{
+    private fun validarCampos(email: String,contraseña: String,confContraseña: String,name: String):Boolean{
+        // Validar que el nombre no esté vacío
+        var esValido = true
+        if (name.isEmpty()) {
+            nameInput.error = "El nombre no puede estar vacío"
+            esValido = false
+        } else {
+            nameInput.error = null
+        }
+
         val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
         if (email.isEmpty()) {
             emailInput.error = "El email no puede estar vacío"
-            return false
+            esValido = false
         } else if (!email.matches(emailPattern.toRegex())) {
             emailInput.error = "Ingrese un correo electrónico válido"
-            return false
+            esValido = false
         }
 
         if(contraseña.isEmpty()){
             contraseñaInput.error = "La contraseña no puede estar vacia"
-            return false
+            esValido = false
         }else if(contraseña.length < 6){
             contraseñaInput.error = "La contraseña debe tener al menos 6 caracteres"
-            return false
+            esValido = false
         }
 
         if(confContraseña.isEmpty()){
             confContraseñaInput.error = "Debe confirmar contraseña"
-            return false
+            esValido = false
         }else if (contraseña != confContraseña){
             confContraseñaInput.error = "Las contraseñas no son iguales"
-            return false
+            esValido = false
         }
         //Si pasa todas las validaciones,devuelve true
-        return true
+        return esValido
     }
 
     private suspend fun userExits(email: String): Boolean{

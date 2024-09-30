@@ -29,6 +29,7 @@ interface UserDao {
     @Query("SELECT * FROM users")
     suspend fun getAllUsers(): List<UserEntity>
 
+
     // Otras operaciones CRUD para UserEntity relacionado con las películas favoritas
 
     //funcion para obtener un usuario por su ID
