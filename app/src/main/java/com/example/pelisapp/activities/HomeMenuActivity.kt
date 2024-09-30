@@ -20,8 +20,6 @@ class HomeMenuActivity : BaseActivity() {
 
     lateinit var films: ArrayList<FilmModel>
     lateinit var imageView: ImageView
-    private lateinit var sharedPreferences: android.content.SharedPreferences
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -50,10 +48,7 @@ class HomeMenuActivity : BaseActivity() {
             intent.putExtra("film", films[position])
             startActivity(intent)
         }
-        imageView = findViewById(R.id.imageView)
-        imageView.setOnClickListener {
-            logout()
-        }
+
     }
 
     private fun fillFilms() {
@@ -74,30 +69,6 @@ class HomeMenuActivity : BaseActivity() {
             films.add(film)
         }
     }
-    private fun logout() {
-        // Eliminar todos los datos almacenados en SharedPreferences
-        clearAllStoredData()
 
-        // Navegar a la pantalla de inicio de sesión
-        val intent = Intent(this, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        finish() // Finalizar la actividad actualh
-    }
-    private fun clearAllStoredData() {
-        // Accede a SharedPreferences
-        val sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE)
 
-        // Crear el editor para modificar SharedPreferences
-        val editor = sharedPreferences.edit()
-
-        // Limpiar todas las referencias guardadas
-        editor.clear()
-
-        // Aplicar los cambios
-        editor.apply()
-
-        // Informar al usuario (opcional)
-        Toast.makeText(this, "Todas las referencias eliminadas", Toast.LENGTH_SHORT).show()
-    }
 }
