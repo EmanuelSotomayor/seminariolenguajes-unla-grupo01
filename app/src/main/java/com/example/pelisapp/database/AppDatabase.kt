@@ -29,7 +29,7 @@ abstract class AppDatabase: RoomDatabase()  {
                 synchronized(AppDatabase::class){
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        AppDatabase::class.java, "movies_app_database")
+                        AppDatabase::class.java, "app_database")
                         .allowMainThreadQueries()
                         .fallbackToDestructiveMigration()
                         .build()

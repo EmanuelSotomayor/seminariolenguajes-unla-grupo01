@@ -6,21 +6,32 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pelisapp.models.FilmModel
 import com.example.pelisapp.views.adapters.FilmRecyclerViewAdapter
 import com.example.pelisapp.MainActivity
 import com.example.pelisapp.R
-
+import com.example.pelisapp.data.MovieApiViewModel
+import com.example.pelisapp.data.MovieDataModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+@AndroidEntryPoint
 class HomeMenuActivity : BaseActivity() {
 
     lateinit var films: ArrayList<FilmModel>
     lateinit var imageView: ImageView
     private lateinit var sharedPreferences: android.content.SharedPreferences
+
+    //el movieApiViewModel es lo que se usa para para acceder a las funciones de la api
+    private  val movieApiViewModel: MovieApiViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +46,7 @@ class HomeMenuActivity : BaseActivity() {
         }
 
         val recyclerView: RecyclerView = findViewById(R.id.filmsRecyclerView)
+
 
         fillFilms()
 
