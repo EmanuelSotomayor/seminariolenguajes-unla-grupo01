@@ -32,6 +32,8 @@ class HomeMenuActivity : BaseActivity() {
 
     //el movieApiViewModel es lo que se usa para para acceder a las funciones de la api
     private  val movieApiViewModel: MovieApiViewModel by viewModels()
+    //url de la imagen
+    val urlImage = "https://image.tmdb.org/t/p/original"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
