@@ -38,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var checkboxRememberUser: CheckBox;
     private val userViewModel: UserViewModel by viewModels()
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sharedPreferences2: SharedPreferences
     private val DB_INSTANCE: AppDatabase? = null;
     //Expresión regular para válidar el formato del email ingresado
     private val EMAIL_PATTERN: String = "[a-z0-9!#\$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#\$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
@@ -60,6 +61,7 @@ class LoginActivity : AppCompatActivity() {
         }*/
 
         sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
+        sharedPreferences2 = getSharedPreferences("user_session", MODE_PRIVATE)
 
         this.loginBtn = findViewById(R.id.btnLogin);
         this.signUpBtn = findViewById(R.id.btnSignUp);
@@ -92,6 +94,13 @@ class LoginActivity : AppCompatActivity() {
                         val userEntity = async { DB_INSTANCE.userDao().getUserByEmail(emailValue) }
                             .await();
                         if(credentialsAreValid(userEntity, passwordValue)){
+                            if (userEntity != null) {
+                                sharedPreferences2.edit().putInt("userId", userEntity.userId).apply()
+                                sharedPreferences2.edit().putString("name", userEntity.name).apply()
+                                sharedPreferences2.edit().putBoolean("isLogged", true).apply()
+                                sharedPreferences2.edit().putBoolean("isRegistered", true).apply()
+
+                            }
                             navigateToMainActivity();
                         }else{
                             /*Como no se puede mostrar un toast en un hilo que no sea de UI,

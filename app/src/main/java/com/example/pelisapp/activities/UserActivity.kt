@@ -25,7 +25,7 @@ class UserActivity : BaseActivity() {
         textUserName = findViewById(R.id.textUserName)
         btnLogout = findViewById(R.id.btnLogout)
         sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE)
-        userName = sharedPreferences.getString("username", "") ?: ""
+        userName = sharedPreferences.getString("name", "") ?: ""
         textUserName.text = userName
         btnLogout.setOnClickListener {
             logout()
