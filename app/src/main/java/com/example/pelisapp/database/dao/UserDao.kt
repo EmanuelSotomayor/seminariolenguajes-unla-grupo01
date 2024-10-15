@@ -2,7 +2,9 @@ package com.example.pelisapp.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.example.pelisapp.database.entitys.FavoriteMovieEntity
 import com.example.pelisapp.database.entitys.UserEntity
 import com.example.pelisapp.database.entitys.UserMovieCrossRef
@@ -38,11 +40,26 @@ interface UserDao {
     @Insert
     suspend fun inserFavoriteMovie(favoriteMovie: FavoriteMovieEntity)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertUserMovieCrossRef(crossRef: UserMovieCrossRef)
-
+    // Obtener un usuario con sus películas favoritas
+    @Transaction
     @Query("SELECT * FROM users WHERE userId = :userId")
-    suspend fun getUserWithMovies(userId: Int): List<UserWithMovies>
+    suspend fun getUserWithMovies(userId: Int): UserWithMovies
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertMovie(favoriteMovie: FavoriteMovieEntity): Long
+
+    @Query("SELECT COUNT(*) FROM user_movie_cross_ref WHERE userId = :userId AND movieId = :movieId")
+    suspend fun checkIfMovieIsFavorite(userId: Int, movieId: Int): Int
+    @Query("DELETE FROM user_movie_cross_ref WHERE userId = :userId AND movieId = :movieId")
+    suspend fun deleteUserMovieCrossRef(userId: Int, movieId: Int)
+    @Query("SELECT * FROM favorite_movies WHERE name = :movieName")
+    suspend fun getMovieByName(movieName: String): FavoriteMovieEntity?
+
+
+
+
 
 
 }

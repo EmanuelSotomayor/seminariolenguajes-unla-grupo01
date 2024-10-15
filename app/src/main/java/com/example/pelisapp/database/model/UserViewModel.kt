@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pelisapp.database.dao.UserDao
 import com.example.pelisapp.database.entitys.UserEntity
+import com.example.pelisapp.database.entitys.UserMovieCrossRef
+import com.example.pelisapp.database.entitys.UserWithMovies
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,6 +23,8 @@ class UserViewModel @Inject constructor(private val userDao: UserDao) : ViewMode
         val user = userDao.getUserByEmail(email)
         return user != null
     }
+
+    // Agregar una película a las favoritas de un usuario
 
     init {
         // acceder a la base de datos y provocar su creación
