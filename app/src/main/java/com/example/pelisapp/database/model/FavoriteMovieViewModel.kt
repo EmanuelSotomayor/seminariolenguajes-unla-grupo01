@@ -3,7 +3,7 @@ package com.example.pelisapp.database.model
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pelisapp.database.dao.FavoriteMovieDao
-import com.example.pelisapp.database.entitys.FavoriteMovieEntity
+import com.example.pelisapp.database.entities.FavoriteMovieEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

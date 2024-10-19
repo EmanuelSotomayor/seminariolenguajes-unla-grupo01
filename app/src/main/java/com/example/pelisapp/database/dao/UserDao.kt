@@ -3,10 +3,10 @@ package com.example.pelisapp.database.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.pelisapp.database.entitys.FavoriteMovieEntity
-import com.example.pelisapp.database.entitys.UserEntity
-import com.example.pelisapp.database.entitys.UserMovieCrossRef
-import com.example.pelisapp.database.entitys.UserWithMovies
+import com.example.pelisapp.database.entities.FavoriteMovieEntity
+import com.example.pelisapp.database.entities.UserEntity
+import com.example.pelisapp.database.entities.UserMovieCrossRef
+import com.example.pelisapp.database.entities.UserWithMovies
 
 @Dao
 interface UserDao {
