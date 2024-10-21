@@ -1,4 +1,4 @@
-package com.example.pelisapp.database.entitys
+package com.example.pelisapp.database.entities
 
 import androidx.room.Embedded
 import androidx.room.Junction

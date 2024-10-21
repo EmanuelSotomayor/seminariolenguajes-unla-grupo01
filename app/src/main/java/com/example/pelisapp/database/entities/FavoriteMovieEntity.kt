@@ -1,8 +1,7 @@
-package com.example.pelisapp.database.entitys
+package com.example.pelisapp.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 
@@ -11,7 +10,7 @@ import androidx.room.PrimaryKey
 )
 data class FavoriteMovieEntity(
 
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "movieId") val movieId: Int,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "movieId") val movieId: Int=0,
     @ColumnInfo(name = "name")var name: String,
     @ColumnInfo(name = "year") var year: String,
     @ColumnInfo(name = "poster") var poster: String,
