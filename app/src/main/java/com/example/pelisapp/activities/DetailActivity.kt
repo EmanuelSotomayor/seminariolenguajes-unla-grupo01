@@ -1,6 +1,5 @@
 package com.example.pelisapp.activities
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -14,45 +13,36 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import coil.load
+import com.example.pelisapp.BottomFragment
 import com.example.pelisapp.R
+import com.example.pelisapp.TopFragment
 import com.example.pelisapp.data.MovieApiViewModel
 import com.example.pelisapp.data.MovieDetailDataModel
 import com.example.pelisapp.database.entities.FavoriteMovieEntity
 import com.example.pelisapp.database.model.UserRepositoryViewModel
-import com.example.pelisapp.models.FilmModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
-   private lateinit var button2: Button
-   private lateinit var titleView: TextView
-   private lateinit var descriptionView: TextView
-   private lateinit var imageView: ImageView
+    private lateinit var button2: Button
+    private lateinit var titleView: TextView
+    private lateinit var descriptionView: TextView
+    private lateinit var imageView: ImageView
     private lateinit var sharedPreferences2: SharedPreferences
     private val userRepositoryViewModel: UserRepositoryViewModel by viewModels()
-
-    //el movieApiViewModel es lo que se usa para para acceder a las funciones de la api
-    private  val movieApiViewModel: MovieApiViewModel by viewModels()
+    private val movieApiViewModel: MovieApiViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_detail)
-        titleView = findViewById(R.id.titleView)
-        descriptionView = findViewById(R.id.descriptionView)
-        imageView = findViewById(R.id.imageView)
-        sharedPreferences2 = getSharedPreferences("user_session", MODE_PRIVATE)
-
-        button2 = findViewById(R.id.button2)
 
         sharedPreferences2 = getSharedPreferences("user_session", MODE_PRIVATE)
-
 
         // Obtener el ID de la película que se pasó como extra
         val movieId = intent.getIntExtra("movie_id", -1)
         if (movieId != -1) {
-            // Si el ID de la película es válido, obtener los detalles desde la API
             getMovieDetails(movieId)
         } else {
             Log.e("DetailActivity", "Movie ID is invalid!")
@@ -64,25 +54,34 @@ class DetailActivity : AppCompatActivity() {
             insets
         }
     }
+
     private fun getMovieDetails(movieId: Int) {
-        // Realiza la solicitud a la API para obtener los detalles de la película
         lifecycleScope.launch {
             try {
                 val movieDetail = movieApiViewModel.getDetailMovieById(movieId)
                 titleView.text = movieDetail.title
                 descriptionView.text = movieDetail.description
-                imageView.load( movieDetail.poster)
+                imageView.load(movieDetail.poster)
+
+                // Carga el TopFragment con título e imagen usando newInstance
+                val topFragment = TopFragment.newInstance(movieDetail.title, movieDetail.poster)
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_top_container, topFragment)
+                    .addToBackStack(null)
+                    .commit()
+
+                // Carga el BottomFragment con la descripción usando newInstance
+                val bottomFragment = BottomFragment.newInstance(movieDetail.description)
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_bottom_container, bottomFragment)
+                    .addToBackStack(null)
+                    .commit()
 
                 // Manejar el botón para agregar a favoritos
                 button2.setOnClickListener {
                     addFavoriteMovie(movieDetail)
                 }
 
-                // Mostrar los detalles de la película en la interfaz de usuario
-               /* if (response.isSuccessful) {
-                } else {
-                    Log.e("DetailActivity", "Error al obtener detalles: ${response.code()}")
-                }*/
             } catch (e: Exception) {
                 Log.e("DetailActivity", "Error en la solicitud de detalles de la película", e)
             }
@@ -95,7 +94,7 @@ class DetailActivity : AppCompatActivity() {
             if (userId != -1) {
                 val favoriteMovie = FavoriteMovieEntity(
                     name = movieDetail.title,
-                    year = movieDetail.releaseDate.substring(0, 4), // Extraer el año
+                    year = movieDetail.releaseDate.substring(0, 4),
                     poster = movieDetail.poster,
                     timeDuraction = "${movieDetail.runtime} minutos"
                 )
@@ -104,8 +103,6 @@ class DetailActivity : AppCompatActivity() {
             } else {
                 Log.e("DetailActivity", "User ID not found in shared preferences!")
             }
-
-
         }
     }
 }

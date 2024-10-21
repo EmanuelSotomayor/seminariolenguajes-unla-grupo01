@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import coil.load
 
 class TopFragment :Fragment() {
 
@@ -24,10 +25,12 @@ class TopFragment :Fragment() {
         // Verifica si los argumentos tienen un titulo e imagen
         arguments?.let {
             val title = it.getString(ARG_TITLE)
-            val imageResId = it.getInt(ARG_IMAGE_RES_ID)
+            val imageUrl = it.getString(ARG_IMAGE_RES_ID)
 
             titleView.text = title
-            imageView.setImageResource(imageResId)
+            imageUrl?.let { url ->
+                imageView.load(url) // Si usas Coil, por ejemplo
+            }
         }
         return view
     }
@@ -45,11 +48,11 @@ class TopFragment :Fragment() {
         private const val ARG_TITLE = "title"
         private const val ARG_IMAGE_RES_ID = "image_res_id"
 
-        fun newInstance(title: String, imageResId: Int): TopFragment {
+        fun newInstance(title: String, imageResId: String): TopFragment {
             val fragment = TopFragment()
             val args = Bundle().apply {
                 putString(ARG_TITLE, title)
-                putInt(ARG_IMAGE_RES_ID, imageResId)
+                putString(ARG_IMAGE_RES_ID, imageResId)
             }
             fragment.arguments = args
             return fragment
