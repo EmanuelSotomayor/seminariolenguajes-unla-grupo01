@@ -43,16 +43,7 @@ class DetailActivity : AppCompatActivity() {
         descriptionView = findViewById(R.id.descriptionView)
         imageView = findViewById(R.id.imageView)
         sharedPreferences2 = getSharedPreferences("user_session", MODE_PRIVATE)
-        val film = intent.getParcelableExtra<FilmModel>("film")
-        if (film != null) {
-            // Mostrar los detalles del film en la interfaz de usuario
-            titleView.text = film.title
-            descriptionView.text = film.info
-            imageView.load(film.image)
 
-        }else {
-            Log.e("SecondActivity", "Film object is null!")
-        }
         button2 = findViewById(R.id.button2)
 
         sharedPreferences2 = getSharedPreferences("user_session", MODE_PRIVATE)
