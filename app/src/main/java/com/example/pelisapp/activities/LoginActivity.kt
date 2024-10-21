@@ -1,8 +1,12 @@
 package com.example.pelisapp.activities
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
@@ -10,6 +14,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
@@ -43,6 +48,7 @@ class LoginActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
+        createNotificationChannel()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -115,6 +121,37 @@ class LoginActivity: AppCompatActivity() {
 
     }
 
+    private fun createNotificationChannel() {
+        val channelId = "user_remember_channel"
+        val channelName = "User Remember Notification"
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel(channelId, channelName, importance)
+        channel.description = "Channel for User Remember notifications"
+
+        val notificationManager = getSystemService(NotificationManager::class.java)
+        notificationManager?.createNotificationChannel(channel)
+    }
+
+    private fun showUserRememberedNotification(email: String) {
+        val channelId = "user_remember_channel"
+
+        val intent = Intent(this, HomeMenuActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+
+        val notification = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.baseline_person_24)
+            .setContentTitle("Usuario recordado")
+            .setContentText("La proxima vez que inicies sesion, tu usuario:  $email sera recordado.")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+            .build()
+
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(0, notification)
+    }
+
     private fun navigateToMainActivity(): Unit{
         val intentNavigateToMain = Intent(this, HomeMenuActivity::class.java);
         startActivity(intentNavigateToMain);
@@ -135,6 +172,7 @@ class LoginActivity: AppCompatActivity() {
         editor.putString("REMEMBERED_EMAIL", email)
         editor.putBoolean("REMEMBERED", true)
         editor.apply()
+        showUserRememberedNotification(email)
     }
 
     private fun loadRememberedUser(): Unit{

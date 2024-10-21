@@ -1,4 +1,4 @@
-package com.example.pelisapp.database.entitys
+package com.example.pelisapp.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
