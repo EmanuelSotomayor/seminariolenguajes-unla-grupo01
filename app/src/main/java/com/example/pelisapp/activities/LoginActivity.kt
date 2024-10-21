@@ -44,7 +44,12 @@ class LoginActivity: AppCompatActivity() {
     private val EMAIL_PATTERN: String = "[a-z0-9!#\$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#\$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+         if (isUserRegistered()) {
+                    // Si ya está registrado, redirigir a la pantalla principal
+                    val intent = Intent(this, HomeMenuActivity::class.java)
+                    startActivity(intent)
+                    finish() // Finalizar la actividad para que no pueda volver a esta pantalla
+         }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
@@ -97,8 +102,11 @@ class LoginActivity: AppCompatActivity() {
                             if (userEntity != null) {
                                 sharedPreferences2.edit().putInt("userId", userEntity.userId).apply()
                                 sharedPreferences2.edit().putString("name", userEntity.name).apply()
+                                sharedPreferences2.edit().putString("email", userEntity.email).apply()
+                                sharedPreferences2.edit().putString("password", userEntity.password).apply()
                                 sharedPreferences2.edit().putBoolean("isLogged", true).apply()
                                 sharedPreferences2.edit().putBoolean("isRegistered", true).apply()
+
 
                             }
                             navigateToMainActivity();
@@ -155,6 +163,7 @@ class LoginActivity: AppCompatActivity() {
     private fun navigateToMainActivity(): Unit{
         val intentNavigateToMain = Intent(this, HomeMenuActivity::class.java);
         startActivity(intentNavigateToMain);
+        finish()
     }
 
     private fun navigateToRegisterActivity(): Unit{
@@ -177,9 +186,11 @@ class LoginActivity: AppCompatActivity() {
 
     private fun loadRememberedUser(): Unit{
         val remembered = sharedPreferences.getBoolean("REMEMBERED", false)
+        val rememberedPassword = sharedPreferences.getString("password", null)
         if (remembered) {
             val rememberedEmail = sharedPreferences.getString("REMEMBERED_EMAIL", "")
             inputEmail.setText(rememberedEmail)
+            inputPassword.setText(rememberedPassword)
             checkboxRememberUser.isChecked = true
         }
     }
@@ -197,6 +208,11 @@ class LoginActivity: AppCompatActivity() {
 
     private fun credentialsAreValid(userEntity: UserEntity?, password: String): Boolean{
         return userEntity != null && userEntity.password == password;
+    }
+    private fun isUserRegistered(): Boolean {
+        // Aquí puedes usar SharedPreferences, una base de datos, o tu sistema de autenticación
+        val sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE)
+        return sharedPreferences.getBoolean("isRegistered", false)
     }
 
 }

@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:text="En un futuro cercano donde la Tierra está al borde de la extinción, el piloto Cooper es reclutado para una misión espacial a través de un agujero de gusano en busca de un nuevo hogar para la humanidad. Mientras enfrenta desafíos extremos en otros planetas, su hija Murph, que quedó en la Tierra, trabaja en un proyecto crucial para salvar a la humanidad. La película explora la relación entre el amor, el sacrificio y la ciencia en un viaje épico a través del tiempo y el espacio."
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/color_text_secondary"
             android:textSize="16sp" />
     </ScrollView>
 
