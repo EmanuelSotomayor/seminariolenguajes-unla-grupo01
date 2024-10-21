@@ -17,7 +17,7 @@ import coil.load
 import com.example.pelisapp.R
 import com.example.pelisapp.data.MovieApiViewModel
 import com.example.pelisapp.data.MovieDetailDataModel
-import com.example.pelisapp.database.entitys.FavoriteMovieEntity
+import com.example.pelisapp.database.entities.FavoriteMovieEntity
 import com.example.pelisapp.database.model.UserRepositoryViewModel
 import com.example.pelisapp.models.FilmModel
 import dagger.hilt.android.AndroidEntryPoint

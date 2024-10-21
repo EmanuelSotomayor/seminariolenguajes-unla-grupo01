@@ -1,9 +1,9 @@
 package com.example.pelisapp.database.model
 
 import com.example.pelisapp.database.dao.UserDao
-import com.example.pelisapp.database.entitys.FavoriteMovieEntity
-import com.example.pelisapp.database.entitys.UserMovieCrossRef
-import com.example.pelisapp.database.entitys.UserWithMovies
+import com.example.pelisapp.database.entities.FavoriteMovieEntity
+import com.example.pelisapp.database.entities.UserMovieCrossRef
+import com.example.pelisapp.database.entities.UserWithMovies
 import javax.inject.Inject
 
 

@@ -20,7 +20,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.pelisapp.R
 import com.example.pelisapp.database.dao.UserDao
-import com.example.pelisapp.database.entitys.UserEntity
+import com.example.pelisapp.database.entities.UserEntity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

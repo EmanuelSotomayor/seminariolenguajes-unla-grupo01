@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.example.pelisapp.database.entitys.FavoriteMovieEntity
-import com.example.pelisapp.database.entitys.UserWithMovies
+import com.example.pelisapp.database.entities.FavoriteMovieEntity
+import com.example.pelisapp.database.entities.UserWithMovies
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

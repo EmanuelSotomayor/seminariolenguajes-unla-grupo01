@@ -4,9 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pelisapp.database.dao.UserDao
-import com.example.pelisapp.database.entitys.UserEntity
-import com.example.pelisapp.database.entitys.UserMovieCrossRef
-import com.example.pelisapp.database.entitys.UserWithMovies
+import com.example.pelisapp.database.entities.UserEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
