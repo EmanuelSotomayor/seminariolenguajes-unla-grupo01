@@ -21,7 +21,7 @@ class BottomFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_bottom, container, false)
         descriptionView = view.findViewById(R.id.descriptionView)
-        saveButton = view.findViewById(R.id.buttonSave)
+        //saveButton = view.findViewById(R.id.buttonSave)
 
         // Verifica si los argumentos tienen una descripción
         arguments?.let {
@@ -29,10 +29,10 @@ class BottomFragment : Fragment() {
             descriptionView.text = description
         }
 
-        saveButton.setOnClickListener {
+       /* saveButton.setOnClickListener {
             val intent = Intent(requireContext(), FavoriteActivity::class.java)
             startActivity(intent)
-        }
+        }*/
 
         return view
     }
