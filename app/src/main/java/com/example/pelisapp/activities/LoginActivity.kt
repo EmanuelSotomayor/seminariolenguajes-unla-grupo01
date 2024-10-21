@@ -4,42 +4,37 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.pelisapp.R
-import com.example.pelisapp.database.AppDatabase
 import com.example.pelisapp.database.dao.UserDao
 import com.example.pelisapp.database.entitys.UserEntity
-import com.example.pelisapp.database.model.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import java.util.Objects
 import java.util.regex.Pattern
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginActivity : AppCompatActivity() {
+class LoginActivity: AppCompatActivity() {
 
     private lateinit var loginBtn: Button;
     private lateinit var signUpBtn: Button;
     private lateinit var inputEmail: EditText;
     private lateinit var inputPassword: EditText;
     private lateinit var checkboxRememberUser: CheckBox;
-    private val userViewModel: UserViewModel by viewModels()
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var sharedPreferences2: SharedPreferences
-    private val DB_INSTANCE: AppDatabase? = null;
+    @Inject
+    lateinit var userDao: UserDao;
     //Expresión regular para válidar el formato del email ingresado
     private val EMAIL_PATTERN: String = "[a-z0-9!#\$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#\$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
 
@@ -75,7 +70,6 @@ class LoginActivity : AppCompatActivity() {
 
             val emailValue = this.inputEmail.text.toString();
             val passwordValue = this.inputPassword.text.toString();
-            val DB_INSTANCE: AppDatabase = AppDatabase.getDBInstance(this);
 
             if(this.checkboxRememberUser.isChecked){
                 rememberUser(emailValue)
@@ -91,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, "Email format aren't valid", Toast.LENGTH_SHORT).show()
                 }else{
                     lifecycleScope.launch(Dispatchers.IO){
-                        val userEntity = async { DB_INSTANCE.userDao().getUserByEmail(emailValue) }
+                        val userEntity = async { userDao.getUserByEmail(emailValue) }
                             .await();
                         if(credentialsAreValid(userEntity, passwordValue)){
                             if (userEntity != null) {
