@@ -91,7 +91,7 @@ class FavoriteActivity : BaseActivity() {
                     FavoriteFilmModel(
                         name = movie.name,
                         year = movie.year,
-                        poster = "https://placehold.co/150x150.png",
+                        poster = movie.poster,
                         timeDuraction = movie.timeDuraction,
                         movieId = movie.movieId
                     )

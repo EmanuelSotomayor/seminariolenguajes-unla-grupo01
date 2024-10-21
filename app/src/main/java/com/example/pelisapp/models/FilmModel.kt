@@ -5,5 +5,6 @@ import kotlinx.parcelize.Parcelize
 data class FilmModel(
         val image: String,
         val title: String,
-        val info: String
+        val info: String,
+        val id: Int=0
 ): Parcelable

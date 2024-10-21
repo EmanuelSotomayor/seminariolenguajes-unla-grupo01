@@ -76,7 +76,7 @@ class HomeMenuActivity : BaseActivity() {
         adapter.setOnClickListener { view ->
             val position = recyclerView.getChildAdapterPosition(view!!)
             val intent = Intent(this@HomeMenuActivity, DetailActivity::class.java)
-            intent.putExtra("film", films[position])
+            intent.putExtra("movie_id", films[position].id)
             startActivity(intent)
         }
 
@@ -101,7 +101,7 @@ class HomeMenuActivity : BaseActivity() {
                 async {
                     val movieDetail: MovieDetailDataModel = movieApiViewModel.getDetailMovieById(movie.id);
                     val descriptionFilm = movieDetail.description;
-                    FilmModel(movie.poster, movie.title, descriptionFilm);
+                    FilmModel(movie.poster, movie.title, movie.releaseDate,movie.id);
                 }
             }.awaitAll();
 
@@ -127,7 +127,7 @@ class HomeMenuActivity : BaseActivity() {
             val filmModels = newMovies.map { movie ->
                 async {
                     val movieDetail: MovieDetailDataModel = movieApiViewModel.getDetailMovieById(movie.id);
-                    FilmModel(movie.poster, movie.title, movieDetail.description);
+                    FilmModel(movie.poster, movie.title, movie.releaseDate,movie.id);
                 }
             }.awaitAll();
 
